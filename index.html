@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>algo Room la  ultina fantasia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .choices {
+            margin-top: 20px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+        }
+        .choice1 {
+            background-color: #007bff;
+        }
+        .choice2 {
+            background-color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Escolha Sua Jornada</h1>
+        <div id="story"></div>
+        <div class="choices">
+            <button id="choice1" class="choice1">Escolha 1</button>
+            <button id="choice2" class="choice2">Escolha 2</button>
+        </div>
+    </div>
+
+    <script>
+        const storyElement = document.getElementById('story');
+        const choice1Button = document.getElementById('choice1');
+        const choice2Button = document.getElementById('choice2');
+
+        function startGame() {
+            storyElement.innerHTML = "<p>Você se encontra em uma vila desolada. Um velho sábio lhe oferece duas opções:</p>";
+            choice1Button.textContent = "Explorar a floresta";
+            choice2Button.textContent = "Investigar o templo";
+            
+            choice1Button.onclick = () => exploreForest();
+            choice2Button.onclick = () => investigateTemple();
+        }
+
+        function exploreForest() {
+            storyElement.innerHTML = "<p>Você decide explorar a floresta. Após caminhar por um tempo, encontra um antigo pergaminho.</p>";
+            choice1Button.textContent = "Ler o pergaminho";
+            choice2Button.textContent = "Guardar o pergaminho";
+
+            choice1Button.onclick = () => readScroll();
+            choice2Button.onclick = () => keepScroll();
+        }
+
+        function investigateTemple() {
+            storyElement.innerHTML = "<p>Você decide investigar o templo. Dentro, você encontra um altar com um cristal brilhante.</p>";
+            choice1Button.textContent = "Pegar o cristal";
+            choice2Button.textContent = "Deixar o cristal onde está";
+
+            choice1Button.onclick = () => takeCrystal();
+            choice2Button.onclick = () => leaveCrystal();
+        }
+
+        function readScroll() {
+            storyElement.innerHTML = "<p>O pergaminho revela um mapa para um tesouro escondido. Você está mais próximo da aventura!</p>";
+            choice1Button.textContent = "Seguir o mapa";
+            choice2Button.textContent = "Desistir da busca";
+
+            choice1Button.onclick = () => followMap();
+            choice2Button.onclick = () => abandonQuest();
+        }
+
+        function keepScroll() {
+            storyElement.innerHTML = "<p>Você guarda o pergaminho com segurança, mas talvez tenha perdido uma grande oportunidade.</p>";
+            choice1Button.textContent = "Voltar para a vila";
+            choice2Button.textContent = "Explorar mais a floresta";
+
+            choice1Button.onclick = () => returnToVillage();
+            choice2Button.onclick = () => continueForest();
+        }
+
+        function takeCrystal() {
+            storyElement.innerHTML = "<p>O cristal concede a você um poder misterioso. Sua jornada está apenas começando!</p>";
+            choice1Button.textContent = "Explorar o templo mais a fundo";
+            choice2Button.textContent = "Sair do templo";
+
+            choice1Button.onclick = () => deeperTemple();
+            choice2Button.onclick = () => leaveTemple();
+        }
+
+        function leaveCrystal() {
+            storyElement.innerHTML = "<p>Você decide não tocar no cristal e sai do templo. Sua história continua.</p>";
+            choice1Button.textContent = "Voltar para a vila";
+            choice2Button.textContent = "Explorar mais a área";
+
+            choice1Button.onclick = () => returnToVillage();
+            choice2Button.onclick = () => exploreArea();
+        }
+
+        function followMap() {
+            storyElement.innerHTML = "<p>Seguindo o mapa, você encontra um baú de tesouro cheio de riquezas. Sua sorte mudou!</p>";
+            choice1Button.style.display = 'none';
+            choice2Button.style.display = 'none';
+        }
+
+        function abandonQuest() {
+            storyElement.innerHTML = "<p>Você decide abandonar a busca. Quem sabe outra oportunidade surja no futuro.</p>";
+            choice1Button.style.display = 'none';
+            choice2Button.style.display = 'none';
+        }
+
+        function returnToVillage() {
+            storyElement.innerHTML = "<p>Você retorna à vila. A aventura ainda está à sua espera.</p>";
+            choice1Button.style.display = 'none';
+            choice2Button.style.display = 'none';
+        }
+
+        function continueForest() {
+            storyElement.innerHTML = "<p>A floresta parece infinita. Novas aventuras podem surgir a qualquer momento.</p>";
+            choice1Button.style.display = 'none';
+            choice2Button.style.display = 'none';
+        }
+
+        function deeperTemple() {
+            storyElement.innerHTML = "<p>Explorando mais a fundo, você encontra um antigo guardião que oferece uma nova missão.</p>";
+            choice1Button.textContent = "Aceitar a missão";
+            choice2Button.textContent = "Recusar e sair";
+
+            choice1Button.onclick = () => acceptMission();
+            choice2Button.onclick = () => leaveTemple();
+        }
+
+        function leaveTemple() {
+            storyElement.innerHTML = "<p>Você decide sair do templo. Suas aventuras continuam por outros caminhos.</p>";
+            choice1Button.style.display = 'none';
+            choice2Button.style.display = 'none';
+        }
+
+        function exploreArea() {
+            storyElement.innerHTML = "<p>Explorando a área, você encontra um grupo de aventureiros. A jornada pode se unir a eles.</p>";
+            choice1Button.textContent = "Juntar-se aos aventureiros";
+            choice2Button.textContent = "Seguir sozinho";
+
+            choice1Button.onclick = () => joinAdventurers();
+            choice2Button.onclick = () => goSolo();
+        }
+
+        function joinAdventurers() {
+            storyElement.innerHTML = "<p>Você se junta aos aventureiros e embarca em uma nova jornada com novos amigos!</p>";
+            choice1Button.style.display = 'none';
+            choice2Button.style.display = 'none';
+        }
+
+        function goSolo() {
+            storyElement.innerHTML = "<p>Você decide seguir seu próprio caminho. Muitas aventuras esperam por você!</p>";
+            choice1Button.style.display = 'none';
+            choice2Button.style.display = 'none';
+        }
+
+        function acceptMission() {
+            storyElement.innerHTML = "<p>Você aceita a missão do guardião. Uma nova e desafiadora jornada começa agora!</p>";
+            choice1Button.style.display = 'none';
+            choice2Button.style.display = 'none';
+        }
+
+        
+        startGame();
+    </script>
+</body>
+</html>
